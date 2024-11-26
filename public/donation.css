@@ -13,39 +13,39 @@
         }
         .S,.A1,.V,.E1,.R,.T,.H,.A2,.E2{color:#fff; display:inline-block; font-size: 60;}
         .S {
-            transform: translate(20px, 130px) rotate(-30deg);
+            transform: translate(20px, 105px) rotate(-40deg);
         }
 
         .A1 {
-            transform: translate(13px, 105px) rotate(-20deg);
+            transform: translate(13px, 85px) rotate(-30deg);
         }
 
         .V {
-            transform: translate(6px, 90px) rotate(-10deg);
+            transform: translate(6px, 70px) rotate(-20deg);
         }
 
         .E1 {
-            transform: translate(1px, 75px) rotate(-5deg);
+            transform: translate(1px, 55px) rotate(-10deg);
         }
 
         .E2 {
-            transform: translate(0px, 70px) rotate(0deg);
+            transform: translate(0px, 50px) rotate(0deg);
         }
 
         .A2 {
-            transform: translate(-1px, 75px) rotate(5deg);
+            transform: translate(-1px, 55px) rotate(10deg);
         }
 
         .R {
-            transform: translate(-6px, 90px) rotate(10deg);
+            transform: translate(-6px, 70px) rotate(20deg);
         }
 
         .T {
-            transform: translate(-13px, 105px) rotate(20deg);
+            transform: translate(-13px, 85px) rotate(30deg);
         }
 
         .H {
-            transform: translate(-20px, 130px) rotate(30deg);
+            transform: translate(-20px, 105px) rotate(40deg);
         }
 
 

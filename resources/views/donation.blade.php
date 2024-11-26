@@ -3,7 +3,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap" rel="stylesheet">
 <!-- just in case need to change font-->
- 
+ @include('layout.navbar')
 <div class="background">
     <div class="container text-center py-3">
         <!-- name -->
