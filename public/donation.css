@@ -1,0 +1,83 @@
+        body {
+            background-image:linear-gradient(#44FC3E, #FFFFFF);
+            font-family: Arial, sans-serif;
+        }
+        .amount{
+            position: absolute; width: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 94; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); text-align: center;
+        }
+        .background {
+            background: url('space.jpg')no-repeat center center/cover;
+            height: 400px;
+            width:100%;
+            position: relative;
+        }
+        .S,.A1,.V,.E1,.R,.T,.H,.A2,.E2{color:#fff; display:inline-block; font-size: 60;}
+        .S {
+            transform: translate(20px, 130px) rotate(-30deg);
+        }
+
+        .A1 {
+            transform: translate(13px, 105px) rotate(-20deg);
+        }
+
+        .V {
+            transform: translate(6px, 90px) rotate(-10deg);
+        }
+
+        .E1 {
+            transform: translate(1px, 75px) rotate(-5deg);
+        }
+
+        .E2 {
+            transform: translate(0px, 70px) rotate(0deg);
+        }
+
+        .A2 {
+            transform: translate(-1px, 75px) rotate(5deg);
+        }
+
+        .R {
+            transform: translate(-6px, 90px) rotate(10deg);
+        }
+
+        .T {
+            transform: translate(-13px, 105px) rotate(20deg);
+        }
+
+        .H {
+            transform: translate(-20px, 130px) rotate(30deg);
+        }
+
+
+        .earth {
+            width: 600px;
+            height: 350px;
+            background: url('earth.png') no-repeat center center / cover;
+            margin: 0 auto;
+            position: absolute;
+            transform: translateX(-50%);
+            top: 104px;
+            left: 50%;
+            overflow:hidden;
+        }
+        .form-section{margin-top:-60px;z-index:10;position:relative;}
+        .form-section, .leaderboard-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .leaderboard-card {
+            background: #007BFF;
+            color: white;
+        }
+        .leaderboard-card.secondary {
+            background: #0056b3;
+        }
+        .donation-date {
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+        ::-webkit-inner-spin-button
+		{ 
+			display: none; 
+		} 
