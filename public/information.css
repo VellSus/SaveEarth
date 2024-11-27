@@ -1,0 +1,12 @@
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+}
+.image-button img {
+    margin-left: 50px;
+    width: 500px;
+    height: 600px;
+    object-fit: cover;
+}

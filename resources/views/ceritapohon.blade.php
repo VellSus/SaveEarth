@@ -8,8 +8,8 @@
 @include('layout.navbar')
   <div class="flipbook">
     <!-- Cover Page -->
-    <div class="hard text-center">Cara Menanam pohon
-    <img src="menanampohon.jpg"alt="cover">
+    <div class="hard ">
+    <img src="CeritaPohonCover.png" style="object-fit:cover;width: 100%; height: 100%;">
     </div>
     <div class="hard"></div>
 

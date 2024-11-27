@@ -15,7 +15,6 @@ Route::get('/bagaimana', function () {
     return view('bagaimana');
 });
 
-
 Route::get('/kalkulatorkarbon', function () {
     return view('carboncalculator');
 });
@@ -30,6 +29,9 @@ Route::get('/kapan', function () {
 
 Route::get('/ceritafauna', function () {
     return view('ceritafauna');
+});
+Route::get('/informasi',function (){
+    return view('information');
 });
 
 
