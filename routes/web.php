@@ -30,8 +30,8 @@ Route::get('/kapan', function () {
 Route::get('/ceritafauna', function () {
     return view('ceritafauna');
 });
-Route::get('/informasi',function (){
-    return view('information');
+Route::get('/katalog',function (){
+    return view('katalog');
 });
 
 

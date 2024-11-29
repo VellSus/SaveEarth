@@ -23,8 +23,8 @@
           <div class="text">Donasi</div>
         </div>
 
-        <div class="right" id="Informasi">
-          <div class="text">Informasi lebih lanjut</div>
+        <div class="right" id="Katalog">
+          <div class="text">Katalog Informasi</div>
         </div>
         
       </div>
@@ -36,8 +36,8 @@
        document.getElementById("CarbonCalculator").addEventListener('click', function() {
           window.location.href = '/kalkulatorkarbon'; 
        });
-       document.getElementById("Informasi").addEventListener('click', function() {
-          window.location.href = '/informasi'; 
+       document.getElementById("Katalog").addEventListener('click', function() {
+          window.location.href = '/katalog'; 
        });
       </script>
        

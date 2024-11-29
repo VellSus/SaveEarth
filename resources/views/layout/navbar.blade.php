@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link" href="/beranda">Beranda</a>
-        <a class="nav-link" href="/informasi">Informasi</a>
+        <a class="nav-link" href="/katalog">Katalog</a>
         <a class="nav-link" href="/kalkulatorkarbon">Kalkulator Karbon</a>
         <a class="nav-link" href="/donasi">Donasi</a>
       </div>

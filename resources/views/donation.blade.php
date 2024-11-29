@@ -34,6 +34,10 @@
                 </div>
                 <p class="fw-bold text-center">Total: Rp.<span id='total'>0</span></p>
                 <div class="mb-3">
+                    <label for="name" class="form-label fw-bold">Email:</label>
+                    <input type="text" id="email" class="form-control rounded border border-4 border-dark" placeholder="Email donor" required maxlength="30">
+                </div>
+                <div class="mb-3">
                     <label for="name" class="form-label fw-bold">Nama:</label>
                     <input type="text" id="name" class="form-control rounded border border-4 border-dark" placeholder="Nama yang ingin di display" required maxlength="20">
                 </div>
@@ -184,7 +188,7 @@
             }
         });
         $('#pembayaranbutton').click(function(){
-            if(!$('#name').val()||!$('#plants').val()){
+            if(!$('#name').val()||!$('#plants').val()||!$('#email').val()){
              $('#alert1').show();
             }
             else{
