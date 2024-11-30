@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarbonCalculatorController;
+use App\Http\Controllers\DonationController;
 
 Route::get('/beranda', function () {
     return view('beranda');
@@ -19,9 +20,6 @@ Route::get('/kalkulatorkarbon', function () {
     return view('carboncalculator');
 });
 
-Route::get('/donasi', function () {
-    return view('donation');
-});
 
 Route::get('/kapan', function () {
     return view('Kapan');
@@ -34,6 +32,8 @@ Route::get('/katalog',function (){
     return view('katalog');
 });
 
+Route::post('/donate', [DonationController::class, 'store'])->name('donate.store');
+Route::get('/donasi',[DonationController::class,'donationView']);
 
 Route::get('/', [CarbonCalculatorController::class, 'index']);
 Route::post('/calculate', [CarbonCalculatorController::class, 'calculate']);

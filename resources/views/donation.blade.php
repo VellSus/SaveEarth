@@ -18,7 +18,7 @@
         <span class="T">T</span>
         <span class="H">H</span>
             <div class="earth">
-                <h1 class="amount">2,137</h1>
+                <h1 class="amount">{{ $totalDonated }}</h1>
             </div>
         </div>
     </div>
@@ -88,72 +88,58 @@
             </div>
             <img src="tree.png"class="rounded-circle border border-dark text-centered rounded mx-auto d-block" style="max-width: 100px;background-image: linear-gradient(#44FC3E, #FFFFFF);">
             <div class="leaderboard-card mx-auto p-3 mb-3 text-center" style="max-width: 700px;background-image: linear-gradient(#19406C, #327CD2);margin-top:-20px;z-index:2;">
-                <h4 class="fw-bold" style="font-size:60px;">Little John</h4>
-                <p class="fs-2 border rounded-pill"style="background-color: #96CC94">1,069 tanaman</p>
-                <span style="font-size:30px;">Trees are cool</span>
-                <p class="donation-date">ditanam pada 19/12/2024</p>
+                <h4 class="fw-bold" style="font-size:60px;">{{ $highestPlantedDonation->name }}</h4>
+                <p class="fs-2 border rounded-pill" style="background-color: #96CC94">{{ number_format($highestPlantedDonation->planted) }} tanaman</p>
+                <span style="font-size:30px;">{{ $highestPlantedDonation->message }}</span>
+                <p class="donation-date">ditanam pada {{ \Carbon\Carbon::parse($highestPlantedDonation->created_at)->format('d/m/Y') }}</p>
             </div>
-        <div style="margin-bottom:20px;">
-        <div class="d-flex align-items-start" style="position: relative; max-width: 700px; margin: auto;">
-        <div class="rounded-circle border border-dark" style="width: 60px; height: 60px; position: absolute; background-image: linear-gradient(#44FC3E, #FFFFFF); top: 6px; left: -30px;">
-            <img src="tree.png" class="rounded-circle border border-white" style="width: 50px; height: 50px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-        </div>
-        <div class="leaderboard-card mx-auto p-1" style="width: 700px; height: 70px; background-image: linear-gradient(to right, #19406C, #327CD2); display: flex; justify-content: space-between; align-items: center;">
-            <div class="flex-grow-1 d-flex flex-column" style="margin-left: 25px;">
-                <h4 class="mb-0 fw-bold"style="font-size:30px;">petani</h4>
-            <span style="font-size: 18px; line-height: 1;">AYO AYO cangkul yang dalam...</span>
+
+    @foreach($nextHighestPlantedDonations as $donation)
+    <div style="margin-bottom:20px;">
+        <div class="d-flex flex-column align-items-start" style="position: relative; max-width: 700px; margin: auto;">
+            <div class="rounded-circle border border-dark" style="width: 60px; height: 60px; position: absolute; background-image: linear-gradient(#44FC3E, #FFFFFF); top: 6px; left: -30px;">
+                <img src="tree.png" class="rounded-circle border border-white" style="width: 50px; height: 50px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
             </div>
-            <div class="text-end flex-shrink-1">
-                <h4 class="mb-0 border rounded-pill " style="background-color: #96CC94; font-size:30px;">1,068 tanaman</h4>
-                <p class="donation-date mb-0" style="font-size: 15px; line-height: 1;">ditanam pada 18/12/2024</p>
+            <div class="leaderboard-card mx-auto p-1" style="width: 700px; height: 70px; background-image: linear-gradient(to right, #19406C, #327CD2); display: flex; justify-content: space-between; align-items: center;">
+                <div class="flex-grow-1 d-flex flex-column" style="margin-left: 25px;">
+                    <h4 class="mb-0 fw-bold" style="font-size:30px;">{{ $donation->name }}</h4>
+                    <span style="font-size: 18px; line-height: 1;">{{ $donation->message }}</span>
+                </div>
+                <div class="text-end flex-shrink-1">
+                    <h4 class="mb-0 border rounded-pill text-center" style="background-color: #96CC94; font-size:30px;">{{ number_format($donation->planted) }} tanaman</h4>
+                    <p class="donation-date mb-0" style="font-size: 15px; line-height: 1;">ditanam pada {{ \Carbon\Carbon::parse($donation->created_at)->format('d/m/Y') }}</p>
+                </div>
             </div>
         </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
+    </div>
+    @endforeach
+</div>
     
-        <div id=terbaru>
-            <h3 class="text-center fw-bold" style="color: #19406C; font-size:100;">Leaderboard</h3>
-            <div class="d-flex justify-content-center my-3">
-                <button class="btn border border-4 border-dark rounded mx-2"style="width:200px;color: #19406C;background-color: #b0e8b5">Terbaru</button>
-                <button class="btn border border-4 border-dark rounded mx-2"style="width:200px;color: #19406C;background-color: #96CC94"id="terbanyakbutton">Tanaman Terbanyak</button>
-            </div>
-        <div style="margin-bottom:20px;">
+        <div id="terbaru">
+    <h3 class="text-center fw-bold" style="color: #19406C; font-size:100;">Leaderboard</h3>
+    <div class="d-flex justify-content-center my-3">
+        <button class="btn border border-4 border-dark rounded mx-2" style="width:200px;color: #19406C;background-color: #b0e8b5">Terbaru</button>
+        <button class="btn border border-4 border-dark rounded mx-2" style="width:200px;color: #19406C;background-color: #96CC94" id="terbanyakbutton">Tanaman Terbanyak</button>
+    </div>
+    @foreach($latestDonations as $donation)
+    <div style="margin-bottom:20px;">
         <div class="d-flex align-items-start" style="position: relative; max-width: 700px; margin: auto;">
-        <div class="rounded-circle border border-dark" style="width: 60px; height: 60px; position: absolute; background-image: linear-gradient(#44FC3E, #FFFFFF); top: 6px; left: -30px;">
-            <img src="tree.png" class="rounded-circle border border-white" style="width: 50px; height: 50px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-        </div>
-        <div class="leaderboard-card mx-auto p-1" style="width: 700px; height: 70px; background-image: linear-gradient(to right, #19406C, #327CD2); display: flex; justify-content: space-between; align-items: center;">
-            <div class="flex-grow-1 d-flex flex-column" style="margin-left: 25px;">
-                <h4 class="mb-0 fw-bold" style="font-size:30px;">Little John</h4>
-            <span style="font-size: 18px; line-height: 1;">Trees are cool</span>
+            <div class="rounded-circle border border-dark" style="width: 60px; height: 60px; position: absolute; background-image: linear-gradient(#44FC3E, #FFFFFF); top: 6px; left: -30px;">
+                <img src="tree.png" class="rounded-circle border border-white" style="width: 50px; height: 50px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
             </div>
-            <div class="text-end flex-shrink-1">
-                <h4 class="mb-0 border rounded-pill" style="background-color: #96CC94;font-size:30px;">1,069 tanaman</h4>
-                <p class="donation-date mb-0" style="font-size: 15px; line-height: 1;">ditanam pada 19/12/2024</p>
+            <div class="leaderboard-card mx-auto p-1" style="width: 700px; height: 70px; background-image: linear-gradient(to right, #19406C, #327CD2); display: flex; justify-content: space-between; align-items: center;">
+                <div class="flex-grow-1 d-flex flex-column" style="margin-left: 25px;">
+                    <h4 class="mb-0 fw-bold" style="font-size:30px;">{{ $donation->name }}</h4>
+                    <span style="font-size: 18px; line-height: 1;">{{ $donation->message }}</span>
+                </div>
+                <div class="text-end flex-shrink-1">
+                    <h4 class="mb-0 border rounded-pill" style="background-color: #96CC94; font-size:30px;">{{ number_format($donation->planted) }} tanaman</h4>
+                    <p class="donation-date mb-0" style="font-size: 15px; line-height: 1;">ditanam pada {{ \Carbon\Carbon::parse($donation->created_at)->format('d/m/Y') }}</p>
+                </div>
             </div>
-        </div>
         </div>
     </div>
-        <div style="margin-bottom:20px;">
-        <div class="d-flex align-items-start" style="position: relative; max-width: 700px; margin: auto;">
-        <div class="rounded-circle border border-dark" style="width: 60px; height: 60px; position: absolute; background-image: linear-gradient(#44FC3E, #FFFFFF); top: 6px; left: -30px;">
-            <img src="tree.png" class="rounded-circle border border-white" style="width: 50px; height: 50px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-        </div>
-        <div class="leaderboard-card mx-auto p-1" style="width: 700px; height: 70px; background-image: linear-gradient(to right, #19406C, #327CD2); display: flex; justify-content: space-between; align-items: center;">
-            <div class="flex-grow-1 d-flex flex-column" style="margin-left: 25px;">
-                <h4 class="mb-0 fw-bold"style="font-size:30px;">petani</h4>
-            <span style="font-size: 18px; line-height: 1;">AYO AYO cangkul yang dalam...</span>
-            </div>
-            <div class="text-end flex-shrink-1">
-                <h4 class="mb-0 border rounded-pill" style="background-color: #96CC94;font-size:30px;">1,068 tanaman</h4>
-                <p class="donation-date mb-0" style="font-size: 15px; line-height: 1;">ditanam pada 18/12/2024</p>
-            </div>
-        </div>
-        </div>
-    </div>
+    @endforeach
 </div>
 <script>
     $(document).ready(function() {
