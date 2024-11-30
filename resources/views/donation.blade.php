@@ -2,6 +2,7 @@
 <link rel = "stylesheet" href="./donation.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap" rel="stylesheet">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <!-- just in case need to change font-->
  @include('layout.navbar')
 <div class="background">
@@ -25,58 +26,59 @@
 </div>
 
         <!-- Form Section -->
+    <form action="{{ route('donation.store') }}" method="POST">
+        @csrf
         <div class="form-section mx-auto p-4 mb-4 border rounded shadow p-3 mb-5" style="width: 500px; background-image:linear-gradient(#44FC3E, #FFFFFF);"id="donasi">
             <h3 class="text-center fw-bold" style="color: #19406C; font-size:35;">SELAMATKAN BUMI!</h3>
             <p class="text-center fw-bold" style="color: #19406C;">Rp.10,000 PER TANAMAN</p>
-            <form>
                 <div class="mb-3">
-                    <input type="number" id="plants" class="form-control rounded border border-4 border-dark" placeholder="Jumlah tanaman" required>
+                    <input type="number" id="plants" name="planted" class="form-control rounded border border-4 border-dark" placeholder="Jumlah tanaman" required>
                 </div>
                 <p class="fw-bold text-center">Total: Rp.<span id='total'>0</span></p>
                 <div class="mb-3">
                     <label for="name" class="form-label fw-bold">Email:</label>
-                    <input type="text" id="email" class="form-control rounded border border-4 border-dark" placeholder="Email donor" required maxlength="30">
+                    <input type="text" id="email" name="email" class="form-control rounded border border-4 border-dark" placeholder="Email donor" required maxlength="30">
                 </div>
                 <div class="mb-3">
                     <label for="name" class="form-label fw-bold">Nama:</label>
-                    <input type="text" id="name" class="form-control rounded border border-4 border-dark" placeholder="Nama yang ingin di display" required maxlength="20">
+                    <input type="text" id="name" name="name" class="form-control rounded border border-4 border-dark" placeholder="Nama yang ingin di display" required maxlength="20">
                 </div>
                 <div class="mb-3">
                     <label for="message" class="form-label fw-bold">Pesan:</label>
-                    <textarea id="message" class="form-control rounded border border-4 border-dark" placeholder="Pesan yang ingin di display" maxlength="40" style="overflow: hidden; resize: none; height: 40px;"></textarea>
+                    <textarea id="message" name="message" class="form-control rounded border border-4 border-dark" placeholder="Pesan yang ingin di display" maxlength="40" style="overflow: hidden; resize: none; height: 40px;"></textarea>
                 </div>
                 <div class="alert alert-danger text-center" role="alert" id="alert1">isilah nama dan jumlah tanaman</div>
-                <button type="button" class="btn btn-primary w-100 fw-bold" style="border-radius:30px" id="pembayaranbutton">Pembayaran</button>
-            </form>
+                <button type="submit" name="action"  value="confirm" class="btn btn-primary w-100 fw-bold" style="border-radius:30px" id="pembayaranbutton">Pembayaran</button>
         </div>
         <!--payment section-->
         <div class="form-section mx-auto p-4 mb-4 border border-4 border-dark rounded" style="max-width: 400px; background-color: #b0e8b5;" id="pembayaran">
             <h2 class="text-center">Info Pembayaran</h2>
             <hr>
             <h2 class="text-center">total payment: RP.<span id="total2">0</span></h2>
-            <input type="number" id="cardNumber" class="form-control text-center rounded border border-4 border-dark" placeholder="CARD NUMBER" maxlength="19" pattern="\d*" required style="margin-bottom:15px;">
+            <input type="number" id="cardNumber" class="form-control text-center rounded border border-4 border-dark" placeholder="CARD NUMBER" maxlength="19">
             <input type="text" id="cardName" class="form-control text-center rounded border border-4 border-dark mb-2" placeholder="CARDHOLDER NAME">
             <div class="row">
                 <div class="col-4">
-                    <input type="number"id="cardMM" class="form-control text-center rounded border border-4 border-dark" placeholder="MM" maxlength="2" pattern="\d*" required>
+                    <input type="number"id="cardMM" class="form-control text-center rounded border border-4 border-dark" placeholder="MM" maxlength="2" pattern="\d*" >
                 </div>
                 <div class="col-4">
-                    <input type="number" id="cardYY"class="form-control text-center rounded border border-4 border-dark" placeholder="YY" maxlength="4" pattern="\d*" required>
+                    <input type="number" id="cardYY"class="form-control text-center rounded border border-4 border-dark" placeholder="YY" maxlength="4" pattern="\d*" >
                 </div>
                 <div class="col-4">
-                    <input type="number"id="cardCVV" class="form-control text-center rounded border border-4 border-dark" placeholder="CVV" maxlength="4" pattern="\d*" required>
+                    <input type="number"id="cardCVV" class="form-control text-center rounded border border-4 border-dark" placeholder="CVV" maxlength="4" pattern="\d*">
                 </div>
             </div> 
             <div class="alert alert-danger text-center" role="alert" id="alert2" style="margin-top: 20px;">isilah informasi yang kosong</div>
             <div class="expiry-cvv mt-3 row">
                 <div class="col-4"style="width:180px;">
-                <button type="button" class="btn btn-primary w-100 fw-bold mb-2" style="border-radius:30px" id="confirmbutton">CONFIRM</button>
+                <button type="submit" name="action"  value="confirm" class="btn btn-primary w-100 fw-bold mb-2" style="border-radius:30px" id="confirmbutton">CONFIRM</button>
                 </div>
                 <div class="col-4"style="width:180px;">
-                <button type="button" class="btn btn-primary w-100 fw-bold" style="border-radius:30px" id="cancelbutton">CANCEL</button>
+                <button type="reset" class="btn btn-primary w-100 fw-bold" style="border-radius:30px" id="cancelbutton">CANCEL</button>
                 </div>
             </div>
         </div>
+        </form>
 
 
         <!-- Leaderboard Section -->
@@ -178,6 +180,7 @@
              $('#alert1').show();
             }
             else{
+            $('form').submit();
             $('#donasi').hide();
             $('#pembayaran').show();
             $('#total2').text(total.toLocaleString('en-US'));

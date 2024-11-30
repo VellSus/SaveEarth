@@ -32,7 +32,7 @@ Route::get('/katalog',function (){
     return view('katalog');
 });
 
-Route::post('/donate', [DonationController::class, 'store'])->name('donate.store');
+Route::post('/donasi', [DonationController::class, 'store'])->name('donation.store');
 Route::get('/donasi',[DonationController::class,'donationView']);
 
 Route::get('/', [CarbonCalculatorController::class, 'index']);
