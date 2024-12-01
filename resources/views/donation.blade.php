@@ -1,5 +1,6 @@
 <link rel = "stylesheet" href="./css/bootstrap.css">
 <link rel = "stylesheet" href="./donation.css">
+<script src="./js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap" rel="stylesheet">
 <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -28,7 +29,7 @@
         <!-- Form Section -->
     <form action="{{ route('donation.store') }}" method="POST">
         @csrf
-        <div class="form-section mx-auto p-4 mb-4 border rounded shadow p-3 mb-5" style="width: 500px; background-image:linear-gradient(#44FC3E, #FFFFFF);"id="donasi">
+        <div class="form-section mx-auto p-4 mb-4 border rounded shadow p-3 mb-5 collapse show" style="width: 500px; background-image:linear-gradient(#44FC3E, #FFFFFF);"id="donasi">
             <h3 class="text-center fw-bold" style="color: #19406C; font-size:35;">SELAMATKAN BUMI!</h3>
             <p class="text-center fw-bold" style="color: #19406C;">Rp.10,000 PER TANAMAN</p>
                 <div class="mb-3">
@@ -48,10 +49,10 @@
                     <textarea id="message" name="message" class="form-control rounded border border-4 border-dark" placeholder="Pesan yang ingin di display" maxlength="40" style="overflow: hidden; resize: none; height: 40px;"></textarea>
                 </div>
                 <div class="alert alert-danger text-center" role="alert" id="alert1">isilah nama dan jumlah tanaman</div>
-                <button type="submit" name="action"  value="confirm" class="btn btn-primary w-100 fw-bold" style="border-radius:30px" id="pembayaranbutton">Pembayaran</button>
+                <button type="button" class="btn btn-primary w-100 fw-bold" style="border-radius:30px" data-bs-toggle="collapse" data-bs-target="#pembayaran, #donasi" id="pembayaranbutton">Pembayaran</button>
         </div>
         <!--payment section-->
-        <div class="form-section mx-auto p-4 mb-4 border border-4 border-dark rounded" style="max-width: 400px; background-color: #b0e8b5;" id="pembayaran">
+        <div class="form-section mx-auto p-4 mb-4 border border-4 border-dark rounded collapse" style="max-width: 400px; background-color: #b0e8b5;" id="pembayaran">
             <h2 class="text-center">Info Pembayaran</h2>
             <hr>
             <h2 class="text-center">total payment: RP.<span id="total2">0</span></h2>
@@ -74,7 +75,7 @@
                 <button type="submit" name="action"  value="confirm" class="btn btn-primary w-100 fw-bold mb-2" style="border-radius:30px" id="confirmbutton">CONFIRM</button>
                 </div>
                 <div class="col-4"style="width:180px;">
-                <button type="reset" class="btn btn-primary w-100 fw-bold" style="border-radius:30px" id="cancelbutton">CANCEL</button>
+                <button type="button" class="btn btn-primary w-100 fw-bold" style="border-radius:30px" data-bs-toggle="collapse" data-bs-target="#pembayaran, #donasi" id="cancelbutton">CANCEL</button>
                 </div>
             </div>
         </div>
@@ -82,10 +83,10 @@
 
 
         <!-- Leaderboard Section -->
-        <div id=terbanyak>
+        <div id=terbanyak class="collapse show" id="terbanyak">
             <h3 class="text-center fw-bold" style="color: #19406C; font-size:100;">Leaderboard</h3>
             <div class="d-flex justify-content-center my-3">
-                <button class="btn border border-4 border-dark rounded mx-2"style="width:200px;color: #19406C;background-color: #96CC94"id="terbarubutton">Terbaru</button>
+                <button class="btn border border-4 border-dark rounded mx-2"style="width:200px;color: #19406C;background-color: #96CC94"id="terbarubutton" data-bs-toggle="collapse" data-bs-target="#terbanyak, #terbaru">Terbaru</button>
                 <button class="btn border border-4 border-dark rounded mx-2"style="width:200px;color: #19406C;background-color: #b0e8b5">Tanaman Terbanyak</button>
             </div>
             <img src="tree.png"class="rounded-circle border border-dark text-centered rounded mx-auto d-block" style="max-width: 100px;background-image: linear-gradient(#44FC3E, #FFFFFF);">
@@ -117,11 +118,11 @@
     @endforeach
 </div>
     
-        <div id="terbaru">
+        <div id="terbaru" class="collapse" id="terbaru">
     <h3 class="text-center fw-bold" style="color: #19406C; font-size:100;">Leaderboard</h3>
     <div class="d-flex justify-content-center my-3">
         <button class="btn border border-4 border-dark rounded mx-2" style="width:200px;color: #19406C;background-color: #b0e8b5">Terbaru</button>
-        <button class="btn border border-4 border-dark rounded mx-2" style="width:200px;color: #19406C;background-color: #96CC94" id="terbanyakbutton">Tanaman Terbanyak</button>
+        <button class="btn border border-4 border-dark rounded mx-2" style="width:200px;color: #19406C;background-color: #96CC94" id="terbanyakbutton" data-bs-toggle="collapse" data-bs-target="#terbaru, #terbanyak">Tanaman Terbanyak</button>
     </div>
     @foreach($latestDonations as $donation)
     <div style="margin-bottom:20px;">
@@ -143,7 +144,7 @@
     </div>
     @endforeach
 </div>
-<script>
+{{-- <script>
     $(document).ready(function() {
         var total=0;
         $('#alert1').hide();
@@ -189,5 +190,5 @@
     
         
     });
-</script>
+</script> --}}
 
