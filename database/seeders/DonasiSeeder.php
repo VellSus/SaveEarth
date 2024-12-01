@@ -18,7 +18,7 @@ class DonasiSeeder extends Seeder
         DB::table('donation')->insert([
             'name'=>$faker->name,
             'email'=>$faker->email,
-            'message'=>$faker->name,
+            'message'=>$faker->text(30),
             'planted'=>$faker->randomDigit
 
         ]);
