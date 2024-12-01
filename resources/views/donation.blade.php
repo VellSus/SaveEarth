@@ -89,7 +89,20 @@
                 <button class="btn border border-4 border-dark rounded mx-2"style="width:200px;color: #19406C;background-color: #96CC94"id="terbarubutton" data-bs-toggle="collapse" data-bs-target="#terbanyak, #terbaru">Terbaru</button>
                 <button class="btn border border-4 border-dark rounded mx-2"style="width:200px;color: #19406C;background-color: #b0e8b5">Tanaman Terbanyak</button>
             </div>
-            <img src="tree.png"class="rounded-circle border border-dark text-centered rounded mx-auto d-block" style="max-width: 100px;background-image: linear-gradient(#44FC3E, #FFFFFF);">
+                 @php
+                    if ($highestPlantedDonation->planted < 10) {
+                        $image = 'seed.png';
+                    }else if($highestPlantedDonation->planted<100){
+                        $image = 'plantgrow.png';
+                    }
+                    else if($highestPlantedDonation->planted<1000){
+                        $image = 'tree.png';
+                    }
+                    else{
+                        $image = 'earth2.png';
+                    }
+                @endphp
+            <img src="{{ asset($image) }}"class="rounded-circle border border-dark text-centered rounded mx-auto d-block" style="max-width: 100px;background-image: linear-gradient(#44FC3E, #FFFFFF);">
             <div class="leaderboard-card mx-auto p-3 mb-3 text-center" style="max-width: 700px;background-image: linear-gradient(#19406C, #327CD2);margin-top:-20px;z-index:2;">
                 <h4 class="fw-bold" style="font-size:60px;">{{ $highestPlantedDonation->name }}</h4>
                 <p class="fs-2 border rounded-pill" style="background-color: #96CC94">{{ number_format($highestPlantedDonation->planted) }} tanaman</p>
@@ -100,8 +113,21 @@
     @foreach($nextHighestPlantedDonations as $donation)
     <div style="margin-bottom:20px;">
         <div class="d-flex flex-column align-items-start" style="position: relative; max-width: 700px; margin: auto;">
+                @php
+                    if ($donation->planted < 10) {
+                        $image = 'seed.png';
+                    }else if($donation->planted<100){
+                        $image = 'plantgrow.png';
+                    }
+                    else if($donation->planted<1000){
+                        $image = 'tree.png';
+                    }
+                    else{
+                        $image = 'earth2.png';
+                    }
+                @endphp
             <div class="rounded-circle border border-dark" style="width: 60px; height: 60px; position: absolute; background-image: linear-gradient(#44FC3E, #FFFFFF); top: 6px; left: -30px;">
-                <img src="tree.png" class="rounded-circle border border-white" style="width: 50px; height: 50px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                <img src="{{ asset($image) }}" class="rounded-circle border border-white" style="width: 50px; height: 50px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
             </div>
             <div class="leaderboard-card mx-auto p-1" style="width: 700px; height: 70px; background-image: linear-gradient(to right, #19406C, #327CD2); display: flex; justify-content: space-between; align-items: center;">
                 <div class="flex-grow-1 d-flex flex-column" style="margin-left: 25px;">
@@ -128,7 +154,20 @@
     <div style="margin-bottom:20px;">
         <div class="d-flex align-items-start" style="position: relative; max-width: 700px; margin: auto;">
             <div class="rounded-circle border border-dark" style="width: 60px; height: 60px; position: absolute; background-image: linear-gradient(#44FC3E, #FFFFFF); top: 6px; left: -30px;">
-                <img src="tree.png" class="rounded-circle border border-white" style="width: 50px; height: 50px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                 @php
+                    if ($donation->planted < 10) {
+                        $image = 'seed.png';
+                    }else if($donation->planted<100){
+                        $image = 'plantgrow.png';
+                    }
+                    else if($donation->planted<1000){
+                        $image = 'tree.png';
+                    }
+                    else{
+                        $image = 'earth2.png';
+                    }
+                @endphp
+                <img src="{{ asset($image) }}" class="rounded-circle border border-white" style="width: 50px; height: 50px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
             </div>
             <div class="leaderboard-card mx-auto p-1" style="width: 700px; height: 70px; background-image: linear-gradient(to right, #19406C, #327CD2); display: flex; justify-content: space-between; align-items: center;">
                 <div class="flex-grow-1 d-flex flex-column" style="margin-left: 25px;">
@@ -136,7 +175,7 @@
                     <span style="font-size: 18px; line-height: 1;">{{ $donation->message }}</span>
                 </div>
                 <div class="text-end flex-shrink-1">
-                    <h4 class="mb-0 border rounded-pill" style="background-color: #96CC94; font-size:30px;">{{ number_format($donation->planted) }} tanaman</h4>
+                    <h4 class="mb-0 border rounded-pill text-center" style="background-color: #96CC94; font-size:30px;">{{ number_format($donation->planted) }} tanaman</h4>
                     <p class="donation-date mb-0" style="font-size: 15px; line-height: 1;">ditanam pada {{ \Carbon\Carbon::parse($donation->created_at)->format('d/m/Y') }}</p>
                 </div>
             </div>
