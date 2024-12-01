@@ -183,6 +183,7 @@
     </div>
     @endforeach
 </div>
+@include('layout.footer')
 <script>
     $(document).ready(function() {
         var total=0;
