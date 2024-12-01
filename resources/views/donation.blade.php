@@ -144,51 +144,15 @@
     </div>
     @endforeach
 </div>
-{{-- <script>
+<script>
     $(document).ready(function() {
         var total=0;
-        $('#alert1').hide();
-        $('#alert2').hide();
         $('#plants').on('input', function() {
             var plantCount = parseInt($(this).val()) || 0;
             total = plantCount * 10000;
             $('#total').text(total.toLocaleString('en-US'));
-        });
-        $('#terbaru').hide();
-        $('#pembayaran').hide();
-        $('#terbarubutton').click(function(){
-            $('#terbaru').show();
-            $('#terbanyak').hide();
-        });
-        $('#terbanyakbutton').click(function(){
-            $('#terbaru').hide();
-            $('#terbanyak').show();
-        });
-        $('#cancelbutton').click(function(){
-            $('#donasi').show();
-            $('#pembayaran').hide();
-        });
-        $('#confirmbutton').click(function(){
-        if(!$('#cardName').val()||!$('#cardMM').val()||!$('#cardYY').val()||!$('#cardCVV').val()||!$('#cardNumber').val()){
-             $('#alert2').show();
-            }
-            else{
-
-            }
-        });
-        $('#pembayaranbutton').click(function(){
-            if(!$('#name').val()||!$('#plants').val()||!$('#email').val()){
-             $('#alert1').show();
-            }
-            else{
-            $('form').submit();
-            $('#donasi').hide();
-            $('#pembayaran').show();
             $('#total2').text(total.toLocaleString('en-US'));
-            }
         });
-    
-        
     });
-</script> --}}
+</script>
 
