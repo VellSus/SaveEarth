@@ -22,12 +22,24 @@ class DonationController extends Controller
     public function store(Request $request)
     {
         if($request->input('step')==='1'){
+            $messages = [
+            'planted.required' => 'Jumlah tanaman harus diisi.',
+            'planted.integer' => 'Jumlah tanaman harus berupa angka.',
+            'planted.min' => 'Jumlah tanaman minimal 1.',
+            'email.required' => 'Email harus diisi.',
+            'email.email' => 'Format email tidak valid.',
+            'email.max' => 'Email maksimal 30 karakter.',
+            'name.required' => 'Nama harus diisi.',
+            'name.max' => 'Nama maksimal 20 karakter.',
+            'message.required' => 'Pesan harus diisi.',
+            'message.max' => 'Pesan maksimal 40 karakter.',
+        ];
         $validated = $request->validate([
             'planted' => 'required|integer|min:1',
             'email' => 'required|email|max:30',
             'name' => 'required|string|max:20',
             'message' => 'required|string|max:40',
-        ]);
+        ],$messages);
         
         $request->session()->put('donation', $validated);
         return redirect()->back()->with('step', '2');
