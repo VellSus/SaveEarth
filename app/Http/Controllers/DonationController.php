@@ -47,6 +47,19 @@ class DonationController extends Controller
 
         if ($request->input('step') === '2') {
             $donationData = $request->session()->get('donation');
+            if (!$donationData) {
+                $request->session()->forget('donation');
+            $latestDonations = Donation::orderBy('created_at', 'desc')->take(10)->get();
+            $highestPlantedDonation = Donation::orderBy('planted', 'desc')->first();
+            $nextHighestPlantedDonations = Donation::orderBy('planted', 'desc')->skip(1)->take(9)->get();
+            $totalDonated = Donation::sum('planted');
+                return view('donation', [
+                'latestDonations' => $latestDonations,
+                'highestPlantedDonation' => $highestPlantedDonation,
+                'nextHighestPlantedDonations' => $nextHighestPlantedDonations,
+                'totalDonated' => $totalDonated
+            ]);
+            }
             Donation::create($donationData);
 
             $request->session()->forget('donation');
