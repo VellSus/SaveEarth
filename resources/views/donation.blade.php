@@ -65,10 +65,15 @@
                 </div>
                 <button type="submit" class="btn btn-primary w-100 fw-bold" style="border-radius:30px">Next</button>
             </div>
-        @elseif (session('step') == '2')
-            <div class="form-section mx-auto p-4 mb-4 border border-4 border-dark rounded" style="max-width: 400px; background-color: #b0e8b5;" id="pembayaran">
+                @elseif (session('step') == '2')
+            <div class="form-section mx-auto p-4 mb-4 border border-4 border-dark rounded show collapse" style="max-width: 400px; background-color: #b0e8b5;" id="pembayaran">
                 <h2 class="text-center">Info Pembayaran</h2>
                 <hr>
+                <div class="d-flex justify-content-center align-items-center">
+                <button type="button" class="btn p-0 border-4 btn-primary me-3"style="width: 105px; height: 68px;" disabled><img src="debit.png" class="img-fluid"></button>
+                <button type="button" class="btn p-0 border-4 btn-primary me-3"style="width: 105px; height: 68px;" data-bs-toggle="collapse" data-bs-target="#pembayaran, #pembayaran2"><img src="qris.png" class="img-fluid"></button>
+                <button type="button" class="btn p-0 border-4 btn-primary"style="width: 105px; height: 68px;" data-bs-toggle="collapse" data-bs-target="#pembayaran, #pembayaran3"><img src="gopay.png" class="img-fluid"></button>
+                </div>
                 <h2 class="text-center">Total payment: RP.<span id="total2">{{ number_format(session('donation.planted') * 10000, 0, ',', '.') }}</span></h2>
                 <input type="number" id="cardNumber" class="form-control text-center rounded border border-4 border-dark" placeholder="CARD NUMBER" maxlength="19">
                 <input type="text" id="cardName" class="form-control text-center rounded border border-4 border-dark mb-2" placeholder="CARDHOLDER NAME">
@@ -83,6 +88,41 @@
                         <input type="number" id="cardCVV" class="form-control text-center rounded border border-4 border-dark" placeholder="CVV" maxlength="4">
                     </div>
                 </div>
+                <div class="expiry-cvv mt-3 row">
+                    <div class="col-4" style="width:180px;">
+                        <button type="submit" name="action" value="confirm" class="btn btn-primary w-100 fw-bold mb-2" style="border-radius:30px">CONFIRM</button>
+                    </div>
+                    <div class="col-4" style="width:180px;">
+                        <button type="submit" name="step" value="1" class="btn btn-primary w-100 fw-bold" style="border-radius:30px">CANCEL</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section mx-auto p-4 mb-4 border border-4 border-dark rounded collapse" style="max-width: 400px; background-color: #b0e8b5;" id="pembayaran2">
+                <h2 class="text-center">Info Pembayaran</h2>
+                <hr>
+                <div class="d-flex justify-content-center align-items-center">
+                <button type="button" class="btn p-0 border-4 btn-primary me-3"style="width: 105px; height: 68px;"data-bs-toggle="collapse" data-bs-target="#pembayaran, #pembayaran2"><img src="debit.png" class="img-fluid"></button>
+                <button type="button" class="btn p-0 border-4 btn-primary me-3"style="width: 105px; height: 68px;"disabled><img src="qris.png" class="img-fluid"></button>
+                <button type="button" class="btn p-0 border-4 btn-primary"style="width: 105px; height: 68px;" data-bs-toggle="collapse" data-bs-target="#pembayaran2, #pembayaran3"><img src="gopay.png" class="img-fluid"></button>
+                </div>
+                <h2 class="text-center">Total payment: RP.<span id="total2">{{ number_format(session('donation.planted') * 10000, 0, ',', '.') }}</span></h2>
+                <img src="qrcode.png" style="object-fit:contain; max-width:100%;">
+                    <div class="mt-3  d-flex justify-content-center">
+                        <button type="submit" name="step" value="1" class="btn btn-primary w-100 fw-bold" style="border-radius:30px; width:180px;">CANCEL</button>
+                    </div>
+            </div>
+
+            <div class="form-section mx-auto p-4 mb-4 border border-4 border-dark rounded collapse" style="max-width: 400px; background-color: #b0e8b5;" id="pembayaran3">
+                <h2 class="text-center">Info Pembayaran</h2>
+                <hr>
+                <div class="d-flex justify-content-center align-items-center">
+                <button type="button" class="btn p-0 border-4 btn-primary me-3"style="width: 105px; height: 68px;"data-bs-toggle="collapse" data-bs-target="#pembayaran, #pembayaran3"><img src="debit.png" class="img-fluid"></button>
+                <button type="button" class="btn p-0 border-4 btn-primary me-3"style="width: 105px; height: 68px;"data-bs-toggle="collapse" data-bs-target="#pembayaran2, #pembayaran3"><img src="qris.png" class="img-fluid"></button>
+                <button type="button" class="btn p-0 border-4 btn-primary"style="width: 105px; height: 68px;" disabled><img src="gopay.png" class="img-fluid"></button>
+                </div>
+                <h2 class="text-center">Total payment: RP.<span id="total2">{{ number_format(session('donation.planted') * 10000, 0, ',', '.') }}</span></h2>
+                <input type="number" id="PhoneNumber" class="form-control text-center rounded border border-4 border-dark" placeholder="Nomor hp" maxlength="14">
                 <div class="expiry-cvv mt-3 row">
                     <div class="col-4" style="width:180px;">
                         <button type="submit" name="action" value="confirm" class="btn btn-primary w-100 fw-bold mb-2" style="border-radius:30px">CONFIRM</button>
