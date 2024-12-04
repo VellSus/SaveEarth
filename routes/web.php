@@ -18,5 +18,5 @@ Route::get('/donasi',[DonationController::class,'donationView']);
 
 Route::get('/', [PageController::class, 'beranda']);
 Route::get('/kalkulatorkarbon', [CarbonCalculatorController::class, 'index']);
-Route::post('/calculate', [CarbonCalculatorController::class, 'calculate']);
+Route::post('/kalkulatorkarbon', [CarbonCalculatorController::class, 'calculate']);
 

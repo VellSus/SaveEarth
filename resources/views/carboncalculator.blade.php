@@ -13,7 +13,7 @@
         <p>{{ session('success') }}</p>
     @endif
 
-    <form action="/calculate" method="POST">
+    <form action="/kalkulatorkarbon" method="POST">
         @csrf
         <label for="activity">Pilih Aktivitas:</label>
         <select name="activity" id="activity">
@@ -28,6 +28,7 @@
         <input type="number" name="electricity" id="electricity">
         <br>
         <button type="submit">Hitung</button>
+        <h4 class="mb-0 fw-bold" style="font-size:30px;">{{ $carbonEmission }}</h4>
     </form>
 </body>
 </html>

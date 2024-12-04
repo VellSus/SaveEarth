@@ -9,8 +9,8 @@ class CarbonCalculatorController extends Controller
 {
     public function index()
     {
-        // Menampilkan form
-        return view('carboncalculator');
+        $carbonEmission="hasil akan muncul disini";
+        return view('carboncalculator',compact('carbonEmission'));
     }
 
     public function calculate(Request $request)
@@ -32,13 +32,7 @@ class CarbonCalculatorController extends Controller
             $carbonEmission = $data['electricity'] * 0.85; // 0.85 kgCO2e/kWh
         }
 
-        // Simpan data ke database
-        CarbonCalculator::create([
-            'activity' => $data['activity'],
-            'carbon_emission' => $carbonEmission,
-        ]);
-
         // Kirim hasil ke view
-        return back()->with('success', "Jejak karbon Anda adalah $carbonEmission kgCO2e.");
+       return view('carboncalculator',compact('carbonEmission'));
     }
 }
