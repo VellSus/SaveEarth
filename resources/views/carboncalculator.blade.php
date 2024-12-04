@@ -21,11 +21,12 @@
             <option value="electricity">Penggunaan Listrik</option>
         </select>
         <br>
-        <label for="distance">Jarak (km):</label>
-        <input type="number" name="distance" id="distance">
+        <label for="distance">angka km/kwh:</label>
+        <input type="number" name="number" id="number" class="@error('number') is-invalid @enderror" value="{{ old('number') }}">
+        @error('number')
+            <div class="text-danger">{{ $message }}</div>
+        @enderror
         <br>
-        <label for="electricity">Listrik (kWh):</label>
-        <input type="number" name="electricity" id="electricity">
         <br>
         <button type="submit">Hitung</button>
         <h4 class="mb-0 fw-bold" style="font-size:30px;">{{ $carbonEmission }}</h4>

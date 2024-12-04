@@ -15,21 +15,23 @@ class CarbonCalculatorController extends Controller
 
     public function calculate(Request $request)
     {
+        $messages = [
+            'number.required' => 'Jumlah angka harus diisi.',
+        ];
         // Validasi input
         $data = $request->validate([
             'activity' => 'required|string',
-            'distance' => 'nullable|numeric',
-            'electricity' => 'nullable|numeric',
-        ]);
+            'number' => 'required|numeric',
+        ],$messages);
 
         // Inisialisasi variabel emisi karbon
         $carbonEmission = 0;
 
         // Hitung berdasarkan aktivitas
-        if ($data['activity'] === 'driving' && isset($data['distance'])) {
-            $carbonEmission = $data['distance'] * 0.24; // 0.24 kgCO2e/km
-        } elseif ($data['activity'] === 'electricity' && isset($data['electricity'])) {
-            $carbonEmission = $data['electricity'] * 0.85; // 0.85 kgCO2e/kWh
+        if ($data['activity'] === 'driving') {
+            $carbonEmission = $data['number'] * 0.24; // 0.24 kgCO2e/km
+        } elseif ($data['activity'] === 'electricity') {
+            $carbonEmission = $data['number'] * 0.85; // 0.85 kgCO2e/kWh
         }
 
         // Kirim hasil ke view

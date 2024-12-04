@@ -76,12 +76,3 @@ button:hover {
     background-color: #2980b9;
 }
 
-.success-message {
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 8px;
-    background-color: #e8f5e9;
-    color: #2e7d32;
-    border: 1px solid #c8e6c9;
-    font-size: 0.9rem;
-}
