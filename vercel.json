@@ -1,3 +1,27 @@
 {
-    "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+    "routes": [{
+        "src":"/",
+        "dest":"/beranda"
+    },
+    {
+        "src":"/donasi",
+        "dest":"/donasi"
+    },
+    {
+        "src":"/kalkulatorkarbon",
+        "dest":"/kalkulatorkarbon"
+    },
+    {
+        "src":"/katalog",
+        "dest":"/katalog"
+    },
+    {
+        "src":"/ceritapohon",
+        "dest":"/ceritapohon"
+    },
+    {
+        "src":"/bagaimana",
+        "dest":"/bagaimana"
+    }
+]
 }
