@@ -12,7 +12,7 @@
     "buildCommand": "vite build",
     "outputDirectory": "public",
     "env": {
-        "APP_ENV": "local",
+        "APP_ENV": "production",
         "APP_DEBUG": "false",
         "APP_URL": "https://yourproductionurl.com",
         "APP_KEY": "base64:8k5oc/kAAj713fock4o32zm4frtQZhi2aea6cAnuKok=",
