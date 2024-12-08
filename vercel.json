@@ -33,6 +33,5 @@
         "DB_PORT": "3307",
         "DB_DATABASE": "SaveEarth_wonderbag",
         "DB_USERNAME": "SaveEarth_wonderbag",
-        "DB_PASSWORD":"89c720e7a82ed541429b8c960342b6e339c943b5"
     }
 }
