@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = "stylesheet" href="/carbon_calculator.css">    
+    <link rel = "stylesheet" href="{{ asset('carbon_calculator.css') }}">    
     <title>Kalkulator Jejak Karbon</title>
     @include('layout.navbar')
 </head>
